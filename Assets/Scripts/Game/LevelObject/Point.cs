@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using DefaultNamespace;
 using UnityEngine;
 
 public class Point : MonoBehaviour
@@ -10,6 +9,8 @@ public class Point : MonoBehaviour
     public List<Point> _connections = new List<Point>();
     protected Player _player;
 
+    [Header("Debug")] 
+    public float OnGizmoLineWidth;
     public virtual void Apply(Player player)
     {
         Debug.Log($"Apply {gameObject.name}");
@@ -60,7 +61,7 @@ public class Point : MonoBehaviour
         {
             _connections.ForEach(point =>
             {
-                DrawLine(transform.position, point.transform.position, 0.1f,
+                DrawLine(transform.position, point.transform.position, OnGizmoLineWidth,
                     point == _player.NextPoint ? Color.red : Color.blue);
             });
         }

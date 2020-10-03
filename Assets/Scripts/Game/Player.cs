@@ -1,7 +1,6 @@
 using UnityEngine;
 
-namespace DefaultNamespace
-{
+
     public class Player : MonoBehaviour
     {
         public float pointDistance = 0.1f;
@@ -54,4 +53,3 @@ namespace DefaultNamespace
             }
         }
     }
-}
