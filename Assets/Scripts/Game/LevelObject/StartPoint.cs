@@ -1,30 +1,29 @@
-using System;
 using UnityEngine;
 
+public class StartPoint : Point
+{
+    [Header("PointSettings")]
+    public float startVelocity = 5;
 
-    public class StartPoint : Point
+    public Player _player;
+
+    private void Awake()
     {
-        [Header("PointSettings")]
-        public float startVelocity = 5;
+        _player.transform.position = transform.position;
+    }
 
-        public Player _player;
-        private void Awake()
+    private void Update()
+    {
+        if (_player.StartPoint == null && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
         {
-            _player.transform.position = transform.position;
-        }
-
-        private void Update()
-        {
-            if (_player.StartPoint == null && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
-            {
-                Launch();
-            }
-        }
-
-        private void Launch()
-        {
-            _player.StartPoint = this;
-            _player.NextPoint = GetNextPoint(this);
-            _player.Velocity = startVelocity;
+            Launch();
         }
     }
+
+    private void Launch()
+    {
+        _player.StartPoint = this;
+        _player.NextPoint = GetNextPoint(this);
+        _player.Velocity = startVelocity;
+    }
+}
