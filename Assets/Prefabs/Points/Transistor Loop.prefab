@@ -243,6 +243,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7467172491982522417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5623395500042765511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e187a9bcdc0c4a80a13e7e61d4d336b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _connections: []
+  OnGizmoLineWidth: 0
+  slowKoef: 1
 --- !u!1 &7532368274455865075
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,8 +409,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Transistor Loop
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3206161310209211838, guid: c87eaf03557c79e4d8fd642d16a43de7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c87eaf03557c79e4d8fd642d16a43de7, type: 3}
+--- !u!1 &5623395500042765511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3206161310209211839, guid: c87eaf03557c79e4d8fd642d16a43de7,
+    type: 3}
+  m_PrefabInstance: {fileID: 7094509512833022328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5623395500042765508 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3206161310209211836, guid: c87eaf03557c79e4d8fd642d16a43de7,

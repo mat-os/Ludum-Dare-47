@@ -3,8 +3,7 @@ using UnityEngine;
 
 public class Transistor : Point
 {
-    public GameObject arrows;
-    public float slowKoef;
+    public float slowKoef = 1;
 
     private Direction _direction = Direction.None;
 
@@ -12,7 +11,6 @@ public class Transistor : Point
     {
         base.BeforeApply(player);
         _player.Velocity /= slowKoef;
-        arrows.SetActive(true);
     }
 
     public override void Apply(Player player)
@@ -65,7 +63,6 @@ public class Transistor : Point
     public override void AfterApply(Player player)
     {
         base.AfterApply(player);
-        arrows.SetActive(false);
         _direction = Direction.None;
     }
 
