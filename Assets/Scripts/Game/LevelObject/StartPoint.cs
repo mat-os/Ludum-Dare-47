@@ -5,16 +5,16 @@ public class StartPoint : Point
     [Header("PointSettings")]
     public float startVelocity = 5;
 
-    public Player _player;
+    public Player _localPlayer;
 
     private void Awake()
     {
-        _player.transform.position = transform.position;
+        _localPlayer.transform.position = transform.position;
     }
 
     private void Update()
     {
-        if (_player.StartPoint == null && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+        if (_localPlayer.StartPoint == null && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
         {
             Launch();
         }
@@ -22,8 +22,8 @@ public class StartPoint : Point
 
     private void Launch()
     {
-        _player.StartPoint = this;
-        _player.NextPoint = GetNextPoint(this);
-        _player.Velocity = startVelocity;
+        _localPlayer.StartPoint = this;
+        _localPlayer.NextPoint = GetNextPoint(this);
+        _localPlayer.Velocity = startVelocity;
     }
 }

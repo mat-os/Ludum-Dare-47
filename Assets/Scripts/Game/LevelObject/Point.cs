@@ -15,9 +15,15 @@ public class Point : MonoBehaviour
     public virtual void Apply(Player player)
     {
         Debug.Log($"Apply {gameObject.name}");
-        player.NextPoint = GetNextPoint(player.StartPoint);
+        var playerStartPoint = player.StartPoint;
         player.StartPoint = this;
+        player.NextPoint = GetNextPoint(playerStartPoint);
         _player = null;
+    }
+
+    public virtual void SetAsNext(Player player)
+    {
+        
     }
 
     public virtual void BeforeApply(Player player)
@@ -62,13 +68,27 @@ public class Point : MonoBehaviour
         {
             _connections.ForEach(point =>
             {
+                if (point == null)
+                {
+                    Debug.LogWarning($"У точки {gameObject.name} заданы пустые связи");
+                    return;
+                }
+                
                 DrawLine(transform.position, point.transform.position, OnGizmoLineWidth,
                     point == _player.NextPoint ? Color.red : Color.blue);
             });
         }
         else
         {
-            _connections.ForEach(point => DrawLine(transform.position, point.transform.position, 0.1f, Color.white));
+            _connections.ForEach(point =>
+            {
+                if (point == null)
+                {
+                    Debug.LogWarning($"У точки {gameObject.name} заданы пустые связи");
+                    return;
+                }
+                DrawLine(transform.position, point.transform.position, 0.1f, Color.white);
+            });
         }
     }
 

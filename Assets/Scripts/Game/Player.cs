@@ -39,8 +39,8 @@ public class Player : MonoBehaviour
                 Velocity = 0;
                 Debug.LogError("Установлена пустая точка назначения");
             }
-
             _nextPoint = value;
+            _nextPoint.SetAsNext(this);
         }
     }
 

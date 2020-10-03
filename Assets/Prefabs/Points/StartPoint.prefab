@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _connections: []
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 10
   startVelocity: 5
-  _player: {fileID: 0}
+  _localPlayer: {fileID: 0}
 --- !u!1001 &6801553443517761756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -77,6 +77,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3206161310209211837, guid: c87eaf03557c79e4d8fd642d16a43de7,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3206161310209211839, guid: c87eaf03557c79e4d8fd642d16a43de7,
         type: 3}

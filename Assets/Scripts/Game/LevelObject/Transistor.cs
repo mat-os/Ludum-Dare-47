@@ -1,11 +1,48 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class Transistor : Point
 {
     public float slowKoef = 1;
+    public GameObject up;
+    public GameObject down;
+    public GameObject left;
+    public GameObject right;
 
     private Direction _direction = Direction.None;
+    private readonly Dictionary<Point, GameObject> _arrows = new Dictionary<Point, GameObject>();
+
+    private void Awake()
+    {
+        up.SetActive(false);
+        down.SetActive(false);
+        right.SetActive(false);
+        left.SetActive(false);
+
+        var fromPosition = transform.position;
+        _connections.ForEach(point =>
+        {
+            var targetPosition = point.transform.position;
+            if (targetPosition.x > fromPosition.x)
+            {
+                _arrows.Add(point, right);
+            }
+            else if (targetPosition.x < fromPosition.x)
+            {
+                _arrows.Add(point, left);
+            }
+            else if (targetPosition.y < fromPosition.y)
+            {
+                _arrows.Add(point, down);
+            }
+            else if (targetPosition.y > fromPosition.y)
+            {
+                _arrows.Add(point, up);
+            }
+        });
+    }
 
     public override void BeforeApply(Player player)
     {
@@ -17,6 +54,22 @@ public class Transistor : Point
     {
         base.Apply(player);
         player.Velocity *= slowKoef;
+        foreach (var arrow in _arrows.Values)
+        {
+            arrow.SetActive(false);
+        }
+    }
+
+    public override void SetAsNext(Player player)
+    {
+        var exits = _connections.Where(point => point != player.StartPoint).ToList();
+        exits.ForEach(point =>
+        {
+            if (_arrows.ContainsKey(point))
+            {
+                _arrows[point].SetActive(true);
+            }
+        });
     }
 
     protected override Point GetNextPoint(Point startPoint)
