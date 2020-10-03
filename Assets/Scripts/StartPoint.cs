@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -6,11 +7,11 @@ namespace DefaultNamespace
     {
         public float startVelocity = 5;
 
-        private Player _player;
+        public Player _player;
 
-        public override void Apply(Player player)
+        private void Awake()
         {
-            _player = player;
+            _player.transform.position = transform.position;
         }
 
         private void Update()
