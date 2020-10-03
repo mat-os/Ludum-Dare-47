@@ -275,6 +275,11 @@ PrefabInstance:
       propertyPath: _connections.Array.data[3]
       value: 
       objectReference: {fileID: 716252892}
+    - target: {fileID: 5021247393183413233, guid: a6cc60a7efdbaa840a020878f88d9a99,
+        type: 3}
+      propertyPath: slowKoef
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 5623395500042765508, guid: a6cc60a7efdbaa840a020878f88d9a99,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -774,8 +779,8 @@ Transform:
   m_Children:
   - {fileID: 518696737}
   - {fileID: 375271428}
-  - {fileID: 84130267}
   - {fileID: 1980091683}
+  - {fileID: 84130267}
   - {fileID: 1037241470}
   - {fileID: 716252894}
   - {fileID: 371346698}
@@ -1319,7 +1324,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 940319621}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2032665493
 GameObject:
