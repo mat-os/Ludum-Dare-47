@@ -5,17 +5,19 @@ using UnityEngine;
 
 public class Point : MonoBehaviour
 {
-    private static readonly float TOLERANCE = 0.01f;
+    protected static readonly float TOLERANCE = 0.01f;
     public List<Point> _connections = new List<Point>();
     protected Player _player;
 
-    [Header("Debug")] 
+    [Header("Debug")]
     public float OnGizmoLineWidth;
+
     public virtual void Apply(Player player)
     {
         Debug.Log($"Apply {gameObject.name}");
         player.NextPoint = GetNextPoint(player.StartPoint);
         player.StartPoint = this;
+        _player = null;
     }
 
     public virtual void BeforeApply(Player player)
@@ -27,10 +29,9 @@ public class Point : MonoBehaviour
     public virtual void AfterApply(Player player)
     {
         Debug.Log($"After Apply {gameObject.name}");
-        _player = null;
     }
 
-    protected Point GetNextPoint(Point startPoint)
+    protected virtual Point GetNextPoint(Point startPoint)
     {
         var exits = _connections.Where(point => point != startPoint).ToList();
         if (exits.Count == 0)
