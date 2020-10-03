@@ -6,7 +6,8 @@ using UnityEngine;
     {
         [Header("PointSettings")]
         public float startVelocity = 5;
-        
+
+        public Player _player;
         private void Awake()
         {
             _player.transform.position = transform.position;
