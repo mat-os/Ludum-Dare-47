@@ -1,18 +1,20 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Game.Framework;
+using Game.LevelObject;
 using UnityEngine;
 
 public class Transistor : Point
 {
     public float slowKoef = 1;
-    public GameObject up;
-    public GameObject down;
-    public GameObject left;
-    public GameObject right;
+    public Arrow up;
+    public Arrow down;
+    public Arrow left;
+    public Arrow right;
 
     private Direction _direction = Direction.None;
-    private readonly Dictionary<Point, GameObject> _arrows = new Dictionary<Point, GameObject>();
+    private readonly Dictionary<Point, Arrow> _arrows = new Dictionary<Point, Arrow>();
+    private bool enableControl;
 
     private void Awake()
     {
@@ -58,21 +60,31 @@ public class Transistor : Point
         {
             arrow.SetActive(false);
         }
+
+        enableControl = false;
     }
 
     public override void SetAsNext(Player player)
     {
         var exits = _connections.Where(point => point != player.StartPoint).ToList();
+        var nextPoint = base.GetNextPoint(player.StartPoint);
+        ClearColors();
         exits.ForEach(point =>
         {
             if (_arrows.ContainsKey(point))
             {
                 _arrows[point].SetActive(true);
+                if (nextPoint == point)
+                {
+                    _arrows[point].SetColor(Color.red); 
+                }
             }
         });
+        
+        enableControl = true;
     }
 
-    protected override Point GetNextPoint(Point startPoint)
+    public override Point GetNextPoint(Point startPoint)
     {
         var exits = _connections.Where(point => point != startPoint).ToList();
         if (exits.Count == 0)
@@ -121,33 +133,40 @@ public class Transistor : Point
 
     private void Update()
     {
-        if (_player != null)
+        if (enableControl)
         {
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
             {
+                ClearColors();
+                up.SetColor(Color.red);
                 _direction = Direction.Up;
             }
             else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
             {
+                ClearColors();
+                right.SetColor(Color.red);
                 _direction = Direction.Right;
             }
             else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
+                ClearColors();
+                down.SetColor(Color.red);
                 _direction = Direction.Down;
             }
             else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
             {
+                ClearColors();
+                left.SetColor(Color.red);
                 _direction = Direction.Left;
             }
         }
     }
 
-    private enum Direction
+    private void ClearColors()
     {
-        None,
-        Up,
-        Down,
-        Left,
-        Right
+        down.SetColor(Color.white);
+        right.SetColor(Color.white);
+        left.SetColor(Color.white);
+        up.SetColor(Color.white);
     }
 }

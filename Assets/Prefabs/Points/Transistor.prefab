@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7471217747725826209}
   - component: {fileID: 6196529271415464972}
+  - component: {fileID: 8185168102421088300}
   m_Layer: 0
   m_Name: LeftArrow
   m_TagString: Untagged
@@ -81,6 +82,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8185168102421088300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187889942270985002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73052ba8393a4eff9fa1721705589655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 6196529271415464972}
 --- !u!1 &3405054837018371573
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6302633801147534578}
   - component: {fileID: 349420913730937371}
+  - component: {fileID: 2706252309020066316}
   m_Layer: 0
   m_Name: RightArrow
   m_TagString: Untagged
@@ -162,6 +177,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2706252309020066316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405054837018371573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73052ba8393a4eff9fa1721705589655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 349420913730937371}
 --- !u!1 &5288359903664291220
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3296132064751535038}
   - component: {fileID: 6736713106763461190}
+  - component: {fileID: 8850548851644623235}
   m_Layer: 0
   m_Name: TopArrow
   m_TagString: Untagged
@@ -243,6 +272,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8850548851644623235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5288359903664291220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73052ba8393a4eff9fa1721705589655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 6736713106763461190}
 --- !u!1 &5685514627663617529
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6152940175261553572}
   - component: {fileID: 2930512319156848404}
+  - component: {fileID: 658975576349383201}
   m_Layer: 0
   m_Name: BottomArrow
   m_TagString: Untagged
@@ -324,6 +367,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &658975576349383201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685514627663617529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73052ba8393a4eff9fa1721705589655, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 2930512319156848404}
 --- !u!114 &4702887268923286206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,10 +395,10 @@ MonoBehaviour:
   _connections: []
   OnGizmoLineWidth: 10
   slowKoef: 1
-  up: {fileID: 5288359903664291220}
-  down: {fileID: 5685514627663617529}
-  left: {fileID: 3187889942270985002}
-  right: {fileID: 3405054837018371573}
+  up: {fileID: 8850548851644623235}
+  down: {fileID: 658975576349383201}
+  left: {fileID: 8185168102421088300}
+  right: {fileID: 2706252309020066316}
 --- !u!1001 &7094509512833022328
 PrefabInstance:
   m_ObjectHideFlags: 0

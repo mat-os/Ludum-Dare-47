@@ -14,7 +14,7 @@ public class StartPoint : Point
 
     private void Update()
     {
-        if (_localPlayer.StartPoint == null && (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)))
+        if (_localPlayer.StartPoint == null && (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space)))
         {
             Launch();
         }
@@ -24,6 +24,7 @@ public class StartPoint : Point
     {
         _localPlayer.StartPoint = this;
         _localPlayer.NextPoint = GetNextPoint(this);
+        _localPlayer.NextPoint.SetAsNext(_localPlayer);
         _localPlayer.Velocity = startVelocity;
     }
 }

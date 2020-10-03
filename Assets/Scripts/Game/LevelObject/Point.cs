@@ -37,7 +37,7 @@ public class Point : MonoBehaviour
         Debug.Log($"After Apply {gameObject.name}");
     }
 
-    protected virtual Point GetNextPoint(Point startPoint)
+    public virtual Point GetNextPoint(Point startPoint)
     {
         var exits = _connections.Where(point => point != startPoint).ToList();
         if (exits.Count == 0)
