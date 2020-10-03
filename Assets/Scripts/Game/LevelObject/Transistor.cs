@@ -15,6 +15,12 @@ public class Transistor : Point
         arrows.SetActive(true);
     }
 
+    public override void Apply(Player player)
+    {
+        base.Apply(player);
+        player.Velocity *= slowKoef;
+    }
+
     protected override Point GetNextPoint(Point startPoint)
     {
         var exits = _connections.Where(point => point != startPoint).ToList();
@@ -59,7 +65,6 @@ public class Transistor : Point
     public override void AfterApply(Player player)
     {
         base.AfterApply(player);
-        player.Velocity *= slowKoef;
         arrows.SetActive(false);
         _direction = Direction.None;
     }
