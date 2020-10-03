@@ -1,11 +1,31 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class Player : MonoBehaviour
 {
     public float pointDistance = 0.1f;
-    public float Velocity { get; set; }
+    public float speedKoef = 1f;
+    public UnityEvent endGame;
+
+    public float Velocity
+    {
+        get => _velocity;
+        set
+        {
+            _velocity = Mathf.Clamp(value, 0, MaxVelocity);
+            if (_velocity == 0)
+            {
+                endGame?.Invoke();
+            }
+        }
+    }
+
     public Point StartPoint { get; set; }
+
+    private float _velocity;
+
+    public int MaxVelocity = 5;
 
     private int inPoint = 1;
 
@@ -32,7 +52,7 @@ public class Player : MonoBehaviour
         {
             var targetPosition = _nextPoint.transform.position;
             transform.position = Vector3.MoveTowards(transform.position,
-                targetPosition, Velocity / 100);
+                targetPosition, Velocity * speedKoef / 50);
 
             if (transform.position.Equals(targetPosition))
             {
