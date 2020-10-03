@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _connections: []
-  OnGizmoLineWidth: 0
+  OnGizmoLineWidth: 1
   startVelocity: 5
   _player: {fileID: 0}
 --- !u!1001 &6801553443517761756

@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 3206161310209211836}
   - component: {fileID: 3206161310209211837}
   - component: {fileID: 3206161310209211838}
+  - component: {fileID: 3632651297689898023}
   m_Layer: 0
-  m_Name: point1 (1)
+  m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +95,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410caf89fc8a46748b7d55191d2df5a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connections:
-  - {fileID: 0}
-  - {fileID: 0}
-  OnGizmoLineWidth: 0
+  _connections: []
+  OnGizmoLineWidth: 1
+--- !u!114 &3632651297689898023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206161310209211839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1813f2e178bfe6b4690754d05c040aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LineRendererPrefab: {fileID: 5796140283044204399, guid: 9eb30944e6153a24bba7e361388cfda5,
+    type: 3}
+  ConnectedPointArray: []
