@@ -154,7 +154,7 @@ MonoBehaviour:
   _connections:
   - {fileID: 1524435689}
   - {fileID: 371346696}
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 0
 --- !u!212 &84130266
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _connections:
   - {fileID: 84130265}
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 0
 --- !u!212 &371346697
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -482,10 +482,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf3b701fc5043eaa810bc33020bc655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connections:
-  - {fileID: 1524435689}
+  _connections: []
   OnGizmoLineWidth: 0
-  startVelocity: 1
+  startVelocity: 5
+  _player: {fileID: 1811212399}
 --- !u!212 &518696736
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ MonoBehaviour:
   _connections:
   - {fileID: 1524435689}
   - {fileID: 371346696}
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 0
 --- !u!212 &716252893
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -894,7 +894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _connections:
   - {fileID: 518696735}
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 0
 --- !u!212 &1037241469
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   - {fileID: 518696735}
   - {fileID: 1980091681}
   - {fileID: 716252892}
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 0
 --- !u!212 &1524435690
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1320,7 +1320,7 @@ MonoBehaviour:
   _connections:
   - {fileID: 1524435689}
   - {fileID: 1037241468}
-  OnGizmoLineWidth: 1
+  OnGizmoLineWidth: 0
 --- !u!212 &1980091682
 SpriteRenderer:
   m_ObjectHideFlags: 0
