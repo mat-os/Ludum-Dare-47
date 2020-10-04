@@ -15,23 +15,14 @@ namespace Game.LevelObject
 
         public override void Apply(Player player)
         {
-            if (capacity < maxCapacity)
+            if (capacity > 0)
             {
-                var needCapacity = maxCapacity - capacity;
-                var playerCapacity = Mathf.RoundToInt(player.Velocity);
-                var chargeCapacity = Mathf.Min(needCapacity, playerCapacity);
-                player.Velocity -= chargeCapacity;
-                capacity += chargeCapacity;
+                capacity--;
+                player.Velocity++;
                 ReDraw();
             }
-            else
-            {
-                var needCapacity = capacity - Mathf.RoundToInt(player.Velocity);
-                player.Velocity += needCapacity;
-                capacity -= needCapacity;
-                ReDraw();
-                base.Apply(player);
-            }
+
+            base.Apply(player);
         }
 
         private void ReDraw()
