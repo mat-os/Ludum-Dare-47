@@ -70,7 +70,7 @@ public class Transistor : Point
             _slowed = false;
             player.Velocity *= slowKoef;
         }
-        
+
         foreach (var arrow in _arrows.Values)
         {
             arrow.SetActive(false);
@@ -100,7 +100,7 @@ public class Transistor : Point
 //                }
             }
         });
-        
+
         _enableControl = true;
     }
 
@@ -166,19 +166,23 @@ public class Transistor : Point
     {
         if (_enableControl)
         {
-            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && up.isActiveAndEnabled)
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && up.isActiveAndEnabled &&
+                _direction != Direction.Up)
             {
                 SelectArrow(up, Direction.Up);
             }
-            else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && right.isActiveAndEnabled)
+            else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && right.isActiveAndEnabled &&
+                     _direction != Direction.Right)
             {
                 SelectArrow(right, Direction.Right);
             }
-            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && down.isActiveAndEnabled)
+            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && down.isActiveAndEnabled &&
+                     _direction != Direction.Down)
             {
                 SelectArrow(down, Direction.Down);
             }
-            else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && left.isActiveAndEnabled)
+            else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && left.isActiveAndEnabled &&
+                     _direction != Direction.Left)
             {
                 SelectArrow(left, Direction.Left);
             }
