@@ -1,3 +1,5 @@
+using System;
+using Game.Framework;
 using UnityEngine;
 
 public class StartPoint : Point
@@ -6,6 +8,11 @@ public class StartPoint : Point
     public float startVelocity = 5;
 
     public Player _localPlayer;
+
+    private void Awake()
+    {
+        SoundController.Instance.BeforeStart();
+    }
 
     private void Update()
     {
@@ -26,21 +33,23 @@ public class StartPoint : Point
 
     public void Prepare()
     {
+        SoundController.Instance.BeforeStart();
         var localPlayerTransform = _localPlayer.transform;
         localPlayerTransform.position = transform.position;
         var transformEulerAngles = localPlayerTransform.eulerAngles;
         transformEulerAngles = Vector3.zero;
         localPlayerTransform.eulerAngles = transformEulerAngles;
-
+        _localPlayer.PrevPoint = null;
         _localPlayer.Velocity = 0;
-        _localPlayer.PrevPoint = this;
-        _localPlayer.StartPoint = this;
-        _localPlayer.NextPoint = GetNextPoint(this);
-        _localPlayer.NextPoint.SetAsNext(_localPlayer);
     }
 
     public void Launch()
     {
+        SoundController.Instance.AfterStart();
+        _localPlayer.PrevPoint = this;
+        _localPlayer.StartPoint = this;
+        _localPlayer.NextPoint = GetNextPoint(this);
+        _localPlayer.NextPoint.SetAsNext(_localPlayer);
         _localPlayer.Velocity = startVelocity;
     }
 }
