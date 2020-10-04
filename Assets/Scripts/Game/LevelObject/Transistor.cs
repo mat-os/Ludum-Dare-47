@@ -73,6 +73,7 @@ public class Transistor : Point
         }
 
         _enableControl = false;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Transistor");
     }
 
     public override void SetAsNext(Player player)
@@ -159,29 +160,29 @@ public class Transistor : Point
         {
             if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && up.isActiveAndEnabled)
             {
-                ClearColors();
-                up.SetColor(Color.red);
-                _direction = Direction.Up;
+                SelectArrow(up, Direction.Up);
             }
             else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && right.isActiveAndEnabled)
             {
-                ClearColors();
-                right.SetColor(Color.red);
-                _direction = Direction.Right;
+                SelectArrow(right, Direction.Right);
             }
             else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && down.isActiveAndEnabled)
             {
-                ClearColors();
-                down.SetColor(Color.red);
-                _direction = Direction.Down;
+                SelectArrow(down, Direction.Down);
             }
             else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && left.isActiveAndEnabled)
             {
-                ClearColors();
-                left.SetColor(Color.red);
-                _direction = Direction.Left;
+                SelectArrow(left, Direction.Left);
             }
         }
+    }
+
+    private void SelectArrow(Arrow arrow, Direction direction)
+    {
+        ClearColors();
+        arrow.SetColor(Color.red);
+        _direction = direction;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/TransChoice");
     }
 
     private void ClearColors()

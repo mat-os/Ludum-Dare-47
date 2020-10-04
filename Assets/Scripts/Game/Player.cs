@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
 
     public void Restart()
     {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerDamaged");
         endGame?.Invoke();
         StartPoint.Prepare();
     }
@@ -103,10 +104,12 @@ public class Player : MonoBehaviour
                     if (Math.Abs(angle + 90) < TOLERANCE)
                     {
                         playerAnimator.SetTrigger(ToRight);
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Povorot");
                     }
                     else if (Math.Abs(angle - 90) < TOLERANCE)
                     {
                         //Пока нет анимации просто поворачиваю объект
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/Povorot");
                         delayed = true;
                     }
                 }
