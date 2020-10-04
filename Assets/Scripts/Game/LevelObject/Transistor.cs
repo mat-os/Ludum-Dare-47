@@ -77,7 +77,7 @@ public class Transistor : Point
         }
 
         _enableControl = false;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Transistor");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Transistor");
     }
 
     public override void SetAsNext(Player player)
@@ -190,7 +190,7 @@ public class Transistor : Point
         ClearColors();
         arrow.SetColor(Color.red);
         _direction = direction;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/TransChoice");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/TransChoice");
     }
 
     private void ClearColors()

@@ -81,7 +81,7 @@ public class Player : MonoBehaviour
 
     public void Restart()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/PlayerDamaged");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/PlayerDamaged");
         endGame?.Invoke();
         StartPoint.Prepare();
     }
@@ -104,12 +104,12 @@ public class Player : MonoBehaviour
                     if (Math.Abs(angle + 90) < TOLERANCE)
                     {
                         playerAnimator.SetTrigger(ToRight);
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/Povorot");
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Povorot");
                     }
                     else if (Math.Abs(angle - 90) < TOLERANCE)
                     {
                         //Пока нет анимации просто поворачиваю объект
-                        FMODUnity.RuntimeManager.PlayOneShot("event:/Povorot");
+                        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Povorot");
                         delayed = true;
                     }
                 }
