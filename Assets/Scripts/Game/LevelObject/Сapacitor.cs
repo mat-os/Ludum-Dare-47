@@ -26,6 +26,7 @@ namespace Game.LevelObject
         {
             if (_currentCapacity > 0)
             {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Condensator");
                 _currentCapacity--;
                 player.Velocity++;
                 ReDraw();
