@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PointManager : MonoBehaviourSingleton<PointManager>
 {
-    public GameObject PointHolder;
+    public GameObject[] PointHolders;
 
     [Header("Prefabs")]
     public GameObject PointPrefab;
@@ -22,11 +22,14 @@ public class PointManager : MonoBehaviourSingleton<PointManager>
 
     public void InitLevelPoints()
     {
-        foreach (Transform point in PointHolder.transform)
+        foreach (var holder in PointHolders)
         {
-            if (point.TryGetComponent(out Point p))
+            foreach (Transform point in holder.transform)
             {
-                _points.Add(p);
+                if (point.TryGetComponent(out Point p))
+                {
+                    _points.Add(p);
+                }
             }
         }
     }

@@ -31,7 +31,7 @@ using UnityEngine;
             {
                 if (point._connections != null)
                 {
-                    var newLr = Instantiate(LineRendererPrefab, PointManager.Instance.PointHolder.transform).GetComponent<LineRenderer>();
+                    var newLr = Instantiate(LineRendererPrefab, PointManager.Instance.PointHolders[0].transform).GetComponent<LineRenderer>();
 
                     newLr.SetPosition(0, point.transform.position);
                     newLr.SetPosition(1, point._connections[i].transform.position);
