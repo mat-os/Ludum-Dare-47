@@ -19,6 +19,7 @@ namespace Game.LevelObject
         {
             base.Apply(player);
             player.Velocity -= slowValue;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Resistor");
         }
     }
 }
