@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3206161310209211836}
   - component: {fileID: 3206161310209211837}
-  - component: {fileID: 3632651297689898023}
   - component: {fileID: 3206161310209211838}
+  - component: {fileID: 7391622912509320471}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -85,21 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3632651297689898023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3206161310209211839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1813f2e178bfe6b4690754d05c040aa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LineRendererPrefab: {fileID: 5796140283044204399, guid: 9eb30944e6153a24bba7e361388cfda5,
-    type: 3}
-  ConnectedPointArray: []
 --- !u!114 &3206161310209211838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +99,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _connections: []
   OnGizmoLineWidth: 10
+--- !u!114 &7391622912509320471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206161310209211839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce98c4d9fdda77c458e516b17b63fde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4817327808387968911
 GameObject:
   m_ObjectHideFlags: 0

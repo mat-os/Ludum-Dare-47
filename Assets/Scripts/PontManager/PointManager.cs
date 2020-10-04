@@ -14,7 +14,7 @@ public class PointManager : MonoBehaviourSingleton<PointManager>
     public GameObject CondensatorPrefab;
     
 
-    public List<Point> _points = new List<Point>();
+   [HideInInspector] public List<Point> _points = new List<Point>();
     private void Awake()
     {
         InitLevelPoints();
