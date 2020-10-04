@@ -1,3 +1,5 @@
+using System;
+using Game.Framework;
 using UnityEngine;
 
 public class StartPoint : Point
@@ -9,12 +11,12 @@ public class StartPoint : Point
 
     private void Awake()
     {
-        _localPlayer.transform.position = transform.position;
+        SoundController.Instance.BeforeStart();
     }
 
     private void Update()
     {
-        if (_localPlayer.StartPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
+        if (_localPlayer.PrevPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
                                                 || Input.GetKeyUp(KeyCode.W)
                                                 || Input.GetKeyUp(KeyCode.Space)
                                                 || Input.GetKeyUp(KeyCode.DownArrow)
@@ -24,12 +26,27 @@ public class StartPoint : Point
                                                 || Input.GetKeyUp(KeyCode.RightArrow)
                                                 || Input.GetKeyUp(KeyCode.D)))
         {
+            Prepare();
             Launch();
         }
     }
 
-    private void Launch()
+    public void Prepare()
     {
+        SoundController.Instance.BeforeStart();
+        var localPlayerTransform = _localPlayer.transform;
+        localPlayerTransform.position = transform.position;
+        var transformEulerAngles = localPlayerTransform.eulerAngles;
+        transformEulerAngles = Vector3.zero;
+        localPlayerTransform.eulerAngles = transformEulerAngles;
+        _localPlayer.PrevPoint = null;
+        _localPlayer.Velocity = 0;
+    }
+
+    public void Launch()
+    {
+        SoundController.Instance.AfterStart();
+        _localPlayer.PrevPoint = this;
         _localPlayer.StartPoint = this;
         _localPlayer.NextPoint = GetNextPoint(this);
         _localPlayer.NextPoint.SetAsNext(_localPlayer);
