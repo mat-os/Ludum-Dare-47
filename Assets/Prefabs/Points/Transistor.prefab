@@ -392,11 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e187a9bcdc0c4a80a13e7e61d4d336b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connections:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _connections: []
   OnGizmoLineWidth: 10
   slowKoef: 3
   up: {fileID: 8850548851644623235}

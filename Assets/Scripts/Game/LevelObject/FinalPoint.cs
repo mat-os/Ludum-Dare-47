@@ -14,7 +14,7 @@ namespace Game.LevelObject
             var position = nextLevelCameraPosition;
             position.z = CameraController.Instance.transform.position.z;
             CameraController.Instance.GoToPosition(position);
-
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Kinoplenka");
             base.Apply(player);
         }
     }

@@ -8,23 +8,25 @@ namespace Game.LevelObject
         public int maxCapacity = 5;
         public Transform lines;
 
+        private int _currentCapacity;
         private void Awake()
         {
+            _currentCapacity = capacity;
             ReDraw();
             Player.Instance.endGame += Reset;
         }
 
         private void Reset()
         {
-            capacity = 1;
+            _currentCapacity = capacity;
             ReDraw();
         }
 
         public override void Apply(Player player)
         {
-            if (capacity > 0)
+            if (_currentCapacity > 0)
             {
-                capacity--;
+                _currentCapacity--;
                 player.Velocity++;
                 ReDraw();
             }
@@ -36,7 +38,7 @@ namespace Game.LevelObject
         {
             for (var i = 0; i < maxCapacity; i++)
             {
-                lines.GetChild(i).gameObject.SetActive(i < capacity);
+                lines.GetChild(i).gameObject.SetActive(i < _currentCapacity);
             }
         }
     }
