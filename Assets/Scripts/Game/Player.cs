@@ -1,14 +1,13 @@
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourSingleton<Player>
 {
     public float pointDistance = 0.1f;
     public float animateDistance = 0.3f;
     public float speedKoef = 1f;
-    public UnityEvent endGame;
+    public event Action endGame;
     public Animator playerAnimator;
 
     public float Velocity

@@ -11,6 +11,13 @@ namespace Game.LevelObject
         private void Awake()
         {
             ReDraw();
+            Player.Instance.endGame += Reset;
+        }
+
+        private void Reset()
+        {
+            capacity = 1;
+            ReDraw();
         }
 
         public override void Apply(Player player)
