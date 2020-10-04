@@ -3086,6 +3086,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PointHolders:
+  - {fileID: 1514019125}
+  - {fileID: 2096405078}
+  - {fileID: 64214788}
   - {fileID: 885507514}
   PointPrefab: {fileID: 3206161310209211839, guid: c87eaf03557c79e4d8fd642d16a43de7,
     type: 3}
