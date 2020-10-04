@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2126429740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8788321381170546901}
   m_RootOrder: 0
@@ -162,8 +162,6 @@ MonoBehaviour:
   pointDistance: 0.35
   animateDistance: 0.3
   speedKoef: 3
-  endGame:
-    m_PersistentCalls:
-      m_Calls: []
   playerAnimator: {fileID: 2126429742}
+  beginPoint: {fileID: 0}
   MaxVelocity: 5
