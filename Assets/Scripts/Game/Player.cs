@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if (transform.position.Equals(targetPosition))
+            if (transform.position.Equals(targetPosition) && inPoint != 0)
             {
                 _nextPoint.Apply(this);
                 inPoint = 0;

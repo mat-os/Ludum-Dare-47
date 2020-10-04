@@ -26,6 +26,10 @@ namespace Game.LevelObject
             }
             else
             {
+                var needCapacity = capacity - Mathf.RoundToInt(player.Velocity);
+                player.Velocity += needCapacity;
+                capacity -= needCapacity;
+                ReDraw();
                 base.Apply(player);
             }
         }
