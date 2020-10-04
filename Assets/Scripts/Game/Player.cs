@@ -39,11 +39,7 @@ public class Player : MonoBehaviourSingleton<Player>
     private float _velocity;
     public int MaxVelocity = 5;
     private int inPoint = 1;
-
     private bool animating;
-
-    //убрать после добавления ивента в анимацию
-    private bool delayed;
 
     public Point NextPoint
     {
@@ -67,6 +63,7 @@ public class Player : MonoBehaviourSingleton<Player>
     private static readonly int ToRight = Animator.StringToHash("ToRight");
     private static readonly int VelocityParam = Animator.StringToHash("Velocity");
     private static readonly float TOLERANCE = 0.0001f;
+    private static readonly int ToLeft = Animator.StringToHash("ToLeft");
 
     public void TurnRight()
     {
@@ -113,9 +110,8 @@ public class Player : MonoBehaviourSingleton<Player>
                     }
                     else if (Math.Abs(angle - 90) < TOLERANCE)
                     {
-                        //Пока нет анимации просто поворачиваю объект
+                        playerAnimator.SetTrigger(ToLeft);
                         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Povorot");
-                        delayed = true;
                     }
                 }
             }
@@ -124,13 +120,6 @@ public class Player : MonoBehaviourSingleton<Player>
             {
                 _nextPoint.Apply(this);
                 inPoint = 0;
-                //убрать после добавления анимации
-                if (delayed)
-                {
-                    delayed = false;
-                    TurnLeft();
-                }
-
                 animating = false;
             }
             else if (Vector3.Distance(transform.position, targetPosition) < pointDistance && inPoint == 1)
