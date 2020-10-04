@@ -313,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   logo: {fileID: 1441028760}
   text: {fileID: 2087250}
+  panel: {fileID: 1205615510}
   isStarted: 0
 --- !u!1 &1390544658
 GameObject:

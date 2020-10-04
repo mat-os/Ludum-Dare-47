@@ -8,6 +8,7 @@ namespace Game.GameManager
     {
         public Image logo;
         public Image text;
+        public Image panel;
         public bool isStarted;
 
         private Sequence _sequence;
@@ -40,6 +41,7 @@ namespace Game.GameManager
             sequence.OnComplete(() =>
             {
                 logo.DOFade(0, 0.5f);
+                panel.DOFade(0, 0.5f);
                 isStarted = true;
             });
         }
