@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Framework;
@@ -14,7 +15,8 @@ public class Transistor : Point
 
     private Direction _direction = Direction.None;
     private readonly Dictionary<Point, Arrow> _arrows = new Dictionary<Point, Arrow>();
-    private bool enableControl;
+    private bool _enableControl;
+    private bool _slowed;
 
     private void Awake()
     {
@@ -49,19 +51,28 @@ public class Transistor : Point
     public override void BeforeApply(Player player)
     {
         base.BeforeApply(player);
-        _player.Velocity /= slowKoef;
+        if (_direction == Direction.None)
+        {
+            _slowed = true;
+            _player.Velocity /= slowKoef;
+        }
     }
 
     public override void Apply(Player player)
     {
         base.Apply(player);
-        player.Velocity *= slowKoef;
+        if (_slowed)
+        {
+            _slowed = false;
+            player.Velocity *= slowKoef;
+        }
+        
         foreach (var arrow in _arrows.Values)
         {
             arrow.SetActive(false);
         }
 
-        enableControl = false;
+        _enableControl = false;
     }
 
     public override void SetAsNext(Player player)
@@ -74,14 +85,14 @@ public class Transistor : Point
             if (_arrows.ContainsKey(point))
             {
                 _arrows[point].SetActive(true);
-                if (nextPoint == point)
-                {
-                    _arrows[point].SetColor(Color.red); 
-                }
+//                if (nextPoint == point)
+//                {
+//                    _arrows[point].SetColor(Color.red); 
+//                }
             }
         });
         
-        enableControl = true;
+        _enableControl = true;
     }
 
     public override Point GetNextPoint(Point startPoint)
@@ -110,7 +121,18 @@ public class Transistor : Point
                 break;
         }
 
-        return nextPoint == null ? base.GetNextPoint(startPoint) : nextPoint;
+        if (nextPoint == null)
+        {
+            nextPoint = exits.FirstOrDefault(point =>
+            {
+                var targetPosition = point.transform.position;
+                var fromPosition = startPoint.transform.position;
+                return Math.Abs(targetPosition.x - fromPosition.x) < TOLERANCE ||
+                       Math.Abs(targetPosition.y - fromPosition.y) < TOLERANCE;
+            });
+        }
+
+        return nextPoint;
     }
 
     private bool PositionPredicate(Component point, bool horizontal, bool max)
@@ -133,7 +155,7 @@ public class Transistor : Point
 
     private void Update()
     {
-        if (enableControl)
+        if (_enableControl)
         {
             if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && up.isActiveAndEnabled)
             {

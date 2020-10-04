@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
                 if (_velocity == 0)
                 {
                     Restart();
-                } 
+                }
             }
         }
     }
@@ -45,14 +45,16 @@ public class Player : MonoBehaviour
         get => _nextPoint;
         set
         {
+            _nextPoint = value;
             if (value == null)
             {
-                Velocity = 0;
                 Debug.LogError("Установлена пустая точка назначения");
+                Restart();
             }
-
-            _nextPoint = value;
-            _nextPoint.SetAsNext(this);
+            else
+            {
+                _nextPoint.SetAsNext(this);
+            }
         }
     }
 
@@ -93,17 +95,20 @@ public class Player : MonoBehaviour
             if (!animating && Vector3.Distance(transform.position, targetPosition) < animateDistance)
             {
                 var nextPoint = _nextPoint.GetNextPoint(PrevPoint);
-                var angle = Vector2.SignedAngle(transform.up,
-                    nextPoint.transform.position - _nextPoint.transform.position);
-                animating = true;
-                if (Math.Abs(angle + 90) < TOLERANCE)
+                if (nextPoint != null)
                 {
-                    playerAnimator.SetTrigger(ToRight);
-                }
-                else if (Math.Abs(angle - 90) < TOLERANCE)
-                {
-                    //Пока нет анимации просто поворачиваю объект
-                    delayed = true;
+                    var angle = Vector2.SignedAngle(transform.up,
+                        nextPoint.transform.position - _nextPoint.transform.position);
+                    animating = true;
+                    if (Math.Abs(angle + 90) < TOLERANCE)
+                    {
+                        playerAnimator.SetTrigger(ToRight);
+                    }
+                    else if (Math.Abs(angle - 90) < TOLERANCE)
+                    {
+                        //Пока нет анимации просто поворачиваю объект
+                        delayed = true;
+                    }
                 }
             }
 
