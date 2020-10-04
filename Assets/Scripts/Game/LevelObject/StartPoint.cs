@@ -42,9 +42,7 @@ public class StartPoint : Point
         SoundController.Instance.BeforeStart();
         var localPlayerTransform = _localPlayer.transform;
         localPlayerTransform.position = transform.position;
-        var transformEulerAngles = localPlayerTransform.eulerAngles;
-        transformEulerAngles = Vector3.zero;
-        localPlayerTransform.eulerAngles = transformEulerAngles;
+        localPlayerTransform.eulerAngles = transform.eulerAngles;
         _localPlayer.PrevPoint = null;
         _localPlayer.Velocity = 0;
     }
