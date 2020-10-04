@@ -1,4 +1,5 @@
 using Game.Framework;
+using Game.GameManager;
 using UnityEngine;
 
 public class StartPoint : Point
@@ -30,7 +31,8 @@ public class StartPoint : Point
                                                 || Input.GetKeyUp(KeyCode.LeftArrow)
                                                 || Input.GetKeyUp(KeyCode.A)
                                                 || Input.GetKeyUp(KeyCode.RightArrow)
-                                                || Input.GetKeyUp(KeyCode.D)))
+                                                || Input.GetKeyUp(KeyCode.D))
+            && GameController.Instance.isStarted)
         {
             Prepare();
             Launch();
