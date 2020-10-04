@@ -9,6 +9,7 @@ public class AnaliticsController : MonoBehaviour
     void Start()
     {
         GameAnalytics.Initialize();
+        NewLevelStartedEvent(1);
     }
 
     public void NewLevelStartedEvent(int levelNum)
