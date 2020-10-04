@@ -135,25 +135,25 @@ public class Transistor : Point
     {
         if (enableControl)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && up.isActiveAndEnabled)
             {
                 ClearColors();
                 up.SetColor(Color.red);
                 _direction = Direction.Up;
             }
-            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && right.isActiveAndEnabled)
             {
                 ClearColors();
                 right.SetColor(Color.red);
                 _direction = Direction.Right;
             }
-            else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && down.isActiveAndEnabled)
             {
                 ClearColors();
                 down.SetColor(Color.red);
                 _direction = Direction.Down;
             }
-            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && left.isActiveAndEnabled)
             {
                 ClearColors();
                 left.SetColor(Color.red);
