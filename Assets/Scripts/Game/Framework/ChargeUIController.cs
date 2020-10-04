@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game.Framework
 {
@@ -8,14 +9,14 @@ namespace Game.Framework
         public Sprite redSprite;
         public Sprite greenSprite;
         private Player _localPlayer;
-        private SpriteRenderer _firstBar;
+        private Image _firstBar;
 
         private int _current;
 
         private void Start()
         {
             _localPlayer = Player.Instance;
-            _firstBar = bars.GetChild(0).GetComponent<SpriteRenderer>();
+            _firstBar = bars.GetChild(0).GetComponent<Image>();
 
             Redraw(2);
         }
