@@ -14,7 +14,15 @@ public class StartPoint : Point
 
     private void Update()
     {
-        if (_localPlayer.StartPoint == null && (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.Space)))
+        if (_localPlayer.StartPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
+                                                || Input.GetKeyUp(KeyCode.W)
+                                                || Input.GetKeyUp(KeyCode.Space)
+                                                || Input.GetKeyUp(KeyCode.DownArrow)
+                                                || Input.GetKeyUp(KeyCode.S)
+                                                || Input.GetKeyUp(KeyCode.LeftArrow)
+                                                || Input.GetKeyUp(KeyCode.A)
+                                                || Input.GetKeyUp(KeyCode.RightArrow)
+                                                || Input.GetKeyUp(KeyCode.D)))
         {
             Launch();
         }
