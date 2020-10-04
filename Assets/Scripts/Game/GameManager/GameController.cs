@@ -24,7 +24,7 @@ namespace Game.GameManager
 
         public void StartGame()
         {
-            
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/InsertCoin");
             _sequence.Kill();
             var sequence = DOTween.Sequence();
             sequence
