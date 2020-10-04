@@ -16,7 +16,7 @@ PlayerSettings:
   productName: LudumDare47
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.92549026, g: 0.80392164, b: 0.89019614, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.9333334, g: 0.8078432, b: 0.89019614, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
   m_SplashScreenOverlayOpacity: 1
