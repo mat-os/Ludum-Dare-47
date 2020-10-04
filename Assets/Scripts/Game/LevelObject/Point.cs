@@ -15,8 +15,8 @@ public class Point : MonoBehaviour
     public virtual void Apply(Player player)
     {
         Debug.Log($"Apply {gameObject.name}");
-        var playerStartPoint = player.StartPoint;
-        player.StartPoint = this;
+        var playerStartPoint = player.PrevPoint;
+        player.PrevPoint = this;
         player.NextPoint = GetNextPoint(playerStartPoint);
         _player = null;
     }

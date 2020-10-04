@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Game.Framework;
@@ -14,7 +15,8 @@ public class Transistor : Point
 
     private Direction _direction = Direction.None;
     private readonly Dictionary<Point, Arrow> _arrows = new Dictionary<Point, Arrow>();
-    private bool enableControl;
+    private bool _enableControl;
+    private bool _slowed;
 
     private void Awake()
     {
@@ -29,18 +31,22 @@ public class Transistor : Point
             var targetPosition = point.transform.position;
             if (targetPosition.x > fromPosition.x)
             {
+                right.SetActive(true);
                 _arrows.Add(point, right);
             }
             else if (targetPosition.x < fromPosition.x)
             {
+                left.SetActive(true);
                 _arrows.Add(point, left);
             }
             else if (targetPosition.y < fromPosition.y)
             {
+                down.SetActive(true);
                 _arrows.Add(point, down);
             }
             else if (targetPosition.y > fromPosition.y)
             {
+                up.SetActive(true);
                 _arrows.Add(point, up);
             }
         });
@@ -54,39 +60,53 @@ public class Transistor : Point
     public override void BeforeApply(Player player)
     {
         base.BeforeApply(player);
-        _player.Velocity /= slowKoef;
+        if (_direction == Direction.None)
+        {
+            _slowed = true;
+            _player.Velocity /= slowKoef;
+        }
     }
 
     public override void Apply(Player player)
     {
         base.Apply(player);
-        player.Velocity *= slowKoef;
+        if (_slowed)
+        {
+            _slowed = false;
+            player.Velocity *= slowKoef;
+        }
+
         foreach (var arrow in _arrows.Values)
         {
             arrow.SetActive(false);
         }
 
-        enableControl = false;
+        _enableControl = false;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Transistor");
     }
 
     public override void SetAsNext(Player player)
     {
-        var exits = _connections.Where(point => point != player.StartPoint).ToList();
-        var nextPoint = base.GetNextPoint(player.StartPoint);
+        up.SetActive(false);
+        down.SetActive(false);
+        right.SetActive(false);
+        left.SetActive(false);
+        var exits = _connections.Where(point => point != player.PrevPoint).ToList();
+        var nextPoint = base.GetNextPoint(player.PrevPoint);
         ClearColors();
         exits.ForEach(point =>
         {
             if (_arrows.ContainsKey(point))
             {
                 _arrows[point].SetActive(true);
-                if (nextPoint == point)
-                {
-                    _arrows[point].SetColor(Color.red); 
-                }
+//                if (nextPoint == point)
+//                {
+//                    _arrows[point].SetColor(Color.red); 
+//                }
             }
         });
-        
-        enableControl = true;
+
+        _enableControl = true;
     }
 
     public override Point GetNextPoint(Point startPoint)
@@ -115,7 +135,18 @@ public class Transistor : Point
                 break;
         }
 
-        return nextPoint == null ? base.GetNextPoint(startPoint) : nextPoint;
+        if (nextPoint == null)
+        {
+            nextPoint = exits.FirstOrDefault(point =>
+            {
+                var targetPosition = point.transform.position;
+                var fromPosition = startPoint.transform.position;
+                return Math.Abs(targetPosition.x - fromPosition.x) < TOLERANCE ||
+                       Math.Abs(targetPosition.y - fromPosition.y) < TOLERANCE;
+            });
+        }
+
+        return nextPoint;
     }
 
     private bool PositionPredicate(Component point, bool horizontal, bool max)
@@ -138,33 +169,37 @@ public class Transistor : Point
 
     private void Update()
     {
-        if (enableControl)
+        if (_enableControl)
         {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && up.isActiveAndEnabled &&
+                _direction != Direction.Up)
             {
-                ClearColors();
-                up.SetColor(Color.red);
-                _direction = Direction.Up;
+                SelectArrow(up, Direction.Up);
             }
-            else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            else if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && right.isActiveAndEnabled &&
+                     _direction != Direction.Right)
             {
-                ClearColors();
-                right.SetColor(Color.red);
-                _direction = Direction.Right;
+                SelectArrow(right, Direction.Right);
             }
-            else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            else if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && down.isActiveAndEnabled &&
+                     _direction != Direction.Down)
             {
-                ClearColors();
-                down.SetColor(Color.red);
-                _direction = Direction.Down;
+                SelectArrow(down, Direction.Down);
             }
-            else if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            else if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && left.isActiveAndEnabled &&
+                     _direction != Direction.Left)
             {
-                ClearColors();
-                left.SetColor(Color.red);
-                _direction = Direction.Left;
+                SelectArrow(left, Direction.Left);
             }
         }
+    }
+
+    private void SelectArrow(Arrow arrow, Direction direction)
+    {
+        ClearColors();
+        arrow.SetColor(Color.red);
+        _direction = direction;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/TransChoice");
     }
 
     private void ClearColors()
