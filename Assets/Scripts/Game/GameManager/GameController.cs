@@ -11,6 +11,7 @@ namespace Game.GameManager
         public Image text;
         public Image panel;
         public bool isStarted;
+        private bool _preStart;
 
         private Sequence _sequence;
 
@@ -54,8 +55,9 @@ namespace Game.GameManager
 
         private void Update()
         {
-            if (!isStarted && Input.anyKey)
+            if (!isStarted && !_preStart && Input.anyKey)
             {
+                _preStart = true;
                 StartGame();
             }
         }
