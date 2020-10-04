@@ -31,18 +31,22 @@ public class Transistor : Point
             var targetPosition = point.transform.position;
             if (targetPosition.x > fromPosition.x)
             {
+                right.SetActive(true);
                 _arrows.Add(point, right);
             }
             else if (targetPosition.x < fromPosition.x)
             {
+                left.SetActive(true);
                 _arrows.Add(point, left);
             }
             else if (targetPosition.y < fromPosition.y)
             {
+                down.SetActive(true);
                 _arrows.Add(point, down);
             }
             else if (targetPosition.y > fromPosition.y)
             {
+                up.SetActive(true);
                 _arrows.Add(point, up);
             }
         });
@@ -78,6 +82,10 @@ public class Transistor : Point
 
     public override void SetAsNext(Player player)
     {
+        up.SetActive(false);
+        down.SetActive(false);
+        right.SetActive(false);
+        left.SetActive(false);
         var exits = _connections.Where(point => point != player.PrevPoint).ToList();
         var nextPoint = base.GetNextPoint(player.PrevPoint);
         ClearColors();
