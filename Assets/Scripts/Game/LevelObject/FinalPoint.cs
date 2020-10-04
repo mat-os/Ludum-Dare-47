@@ -7,6 +7,7 @@ namespace Game.LevelObject
         public override void Apply(Player player)
         {
             SoundController.Instance.FinalMusic();
+            base.Apply(player);
         }
     }
 }

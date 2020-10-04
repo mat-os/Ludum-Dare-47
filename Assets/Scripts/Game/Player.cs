@@ -9,6 +9,12 @@ public class Player : MonoBehaviourSingleton<Player>
     public float speedKoef = 1f;
     public event Action endGame;
     public Animator playerAnimator;
+    public StartPoint beginPoint;
+
+    private void Awake()
+    {
+        StartPoint = beginPoint;
+    }
 
     public float Velocity
     {

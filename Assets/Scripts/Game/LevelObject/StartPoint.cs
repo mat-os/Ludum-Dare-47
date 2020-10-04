@@ -1,4 +1,3 @@
-using System;
 using Game.Framework;
 using UnityEngine;
 
@@ -14,9 +13,16 @@ public class StartPoint : Point
         SoundController.Instance.BeforeStart();
     }
 
+    public override void Apply(Player player)
+    {
+        player.StartPoint = this;
+        player.Velocity = 0;
+        Prepare();
+    }
+
     private void Update()
     {
-        if (_localPlayer.PrevPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
+        if (_localPlayer.StartPoint == this && _localPlayer.PrevPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
                                                 || Input.GetKeyUp(KeyCode.W)
                                                 || Input.GetKeyUp(KeyCode.Space)
                                                 || Input.GetKeyUp(KeyCode.DownArrow)
