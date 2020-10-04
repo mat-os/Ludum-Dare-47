@@ -5859,6 +5859,29 @@ MonoBehaviour:
     - Name: Gameplay - Final
       Value: 0
   TriggerEvent: 12
+--- !u!114 &899709789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899709785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Pobeda
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!114 &902141890 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3206161310209211838, guid: c87eaf03557c79e4d8fd642d16a43de7,
@@ -10511,6 +10534,35 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1530259410}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1573401204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4549762170053653881, guid: f75d467987f524046ab1d672b5a4b407,
+    type: 3}
+  m_PrefabInstance: {fileID: 337206858}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1573401208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573401204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/SFX/Start
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1001 &1573545012
 PrefabInstance:
   m_ObjectHideFlags: 0
