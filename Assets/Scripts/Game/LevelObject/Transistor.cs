@@ -44,6 +44,11 @@ public class Transistor : Point
                 _arrows.Add(point, up);
             }
         });
+
+        foreach (var arrow in _arrows)
+        {
+            arrow.Value.SetActive(true);
+        }
     }
 
     public override void BeforeApply(Player player)
