@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 
@@ -9,12 +10,13 @@ namespace Game.Framework
         public float moveDuration = 2;
         public Camera localCamera;
 
-        public void GoToPosition(Vector3 position)
+        public void GoToPosition(Vector3 position, Action onComplete)
         {
             var sequence = DOTween.Sequence();
             sequence.Append(localCamera.DOFieldOfView(45, zoomDuration));
             sequence.Append(localCamera.transform.DOMove(position, moveDuration));
             sequence.Append(localCamera.DOFieldOfView(40, zoomDuration));
+            sequence.OnComplete(onComplete.Invoke);
         }
     }
 }

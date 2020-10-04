@@ -1,11 +1,13 @@
 using Game.Framework;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Game.LevelObject
 {
     public class FinalPoint : Point
     {
         public Vector3 nextLevelCameraPosition;
+        public UnityEvent finalEvent;
 
         public override void Apply(Player player)
         {
@@ -13,8 +15,8 @@ namespace Game.LevelObject
 
             var position = nextLevelCameraPosition;
             position.z = CameraController.Instance.transform.position.z;
-            CameraController.Instance.GoToPosition(position);
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Kinoplenka");
+            CameraController.Instance.GoToPosition(position, () => { finalEvent?.Invoke(); });
             base.Apply(player);
         }
     }

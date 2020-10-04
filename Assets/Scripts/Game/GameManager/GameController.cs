@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace Game.GameManager
@@ -13,6 +14,11 @@ namespace Game.GameManager
 
         private Sequence _sequence;
 
+        public void RestartScene()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        
         private void Awake()
         {
             _sequence = DOTween.Sequence();

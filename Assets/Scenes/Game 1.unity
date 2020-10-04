@@ -13403,6 +13403,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
+      propertyPath: finalEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
       propertyPath: _connections.Array.data[0]
       value: 
       objectReference: {fileID: 143274263}
@@ -13421,6 +13425,26 @@ PrefabInstance:
     - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
       propertyPath: nextLevelCameraPosition.z
       value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
+      propertyPath: finalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
+      propertyPath: finalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
+      propertyPath: finalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2049593418}
+    - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
+      propertyPath: finalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2054180319, guid: 057b8ab71e802a94bb7feb7136827171, type: 3}
+      propertyPath: finalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2751592865022059240, guid: 057b8ab71e802a94bb7feb7136827171,
         type: 3}
@@ -13827,6 +13851,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2049593418 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1205615512, guid: 106049254aabe47409f1295b420152ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 2107365684}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d509cc69ec4f31b1919977f6a76390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2062453378
 PrefabInstance:
   m_ObjectHideFlags: 0
