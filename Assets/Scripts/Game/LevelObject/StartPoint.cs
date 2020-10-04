@@ -7,14 +7,9 @@ public class StartPoint : Point
 
     public Player _localPlayer;
 
-    private void Awake()
-    {
-        _localPlayer.transform.position = transform.position;
-    }
-
     private void Update()
     {
-        if (_localPlayer.StartPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
+        if (_localPlayer.PrevPoint == null && (Input.GetKeyUp(KeyCode.UpArrow)
                                                 || Input.GetKeyUp(KeyCode.W)
                                                 || Input.GetKeyUp(KeyCode.Space)
                                                 || Input.GetKeyUp(KeyCode.DownArrow)
@@ -24,15 +19,28 @@ public class StartPoint : Point
                                                 || Input.GetKeyUp(KeyCode.RightArrow)
                                                 || Input.GetKeyUp(KeyCode.D)))
         {
+            Prepare();
             Launch();
         }
     }
 
-    private void Launch()
+    public void Prepare()
     {
+        var localPlayerTransform = _localPlayer.transform;
+        localPlayerTransform.position = transform.position;
+        var transformEulerAngles = localPlayerTransform.eulerAngles;
+        transformEulerAngles = Vector3.zero;
+        localPlayerTransform.eulerAngles = transformEulerAngles;
+
+        _localPlayer.Velocity = 0;
+        _localPlayer.PrevPoint = this;
         _localPlayer.StartPoint = this;
         _localPlayer.NextPoint = GetNextPoint(this);
         _localPlayer.NextPoint.SetAsNext(_localPlayer);
+    }
+
+    public void Launch()
+    {
         _localPlayer.Velocity = startVelocity;
     }
 }

@@ -66,8 +66,8 @@ public class Transistor : Point
 
     public override void SetAsNext(Player player)
     {
-        var exits = _connections.Where(point => point != player.StartPoint).ToList();
-        var nextPoint = base.GetNextPoint(player.StartPoint);
+        var exits = _connections.Where(point => point != player.PrevPoint).ToList();
+        var nextPoint = base.GetNextPoint(player.PrevPoint);
         ClearColors();
         exits.ForEach(point =>
         {

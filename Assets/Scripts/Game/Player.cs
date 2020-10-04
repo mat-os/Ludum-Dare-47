@@ -16,16 +16,20 @@ public class Player : MonoBehaviour
         get => _velocity;
         set
         {
-            _velocity = Mathf.Clamp(value, 0, MaxVelocity);
-            playerAnimator.SetFloat(VelocityParam, Velocity);
-            if (_velocity == 0)
+            if (_velocity != value)
             {
-                endGame?.Invoke();
+                _velocity = Mathf.Clamp(value, 0, MaxVelocity);
+                playerAnimator.SetFloat(VelocityParam, Velocity);
+                if (_velocity == 0)
+                {
+                    Restart();
+                } 
             }
         }
     }
 
-    public Point StartPoint { get; set; }
+    public Point PrevPoint { get; set; }
+    public StartPoint StartPoint { get; set; }
 
     private float _velocity;
     public int MaxVelocity = 5;
@@ -73,6 +77,12 @@ public class Player : MonoBehaviour
         animating = false;
     }
 
+    public void Restart()
+    {
+        endGame?.Invoke();
+        StartPoint.Prepare();
+    }
+
     private void FixedUpdate()
     {
         if (Velocity > 0)
@@ -82,7 +92,7 @@ public class Player : MonoBehaviour
                 targetPosition, Velocity * speedKoef / 50);
             if (!animating && Vector3.Distance(transform.position, targetPosition) < animateDistance)
             {
-                var nextPoint = _nextPoint.GetNextPoint(StartPoint);
+                var nextPoint = _nextPoint.GetNextPoint(PrevPoint);
                 var angle = Vector2.SignedAngle(transform.up,
                     nextPoint.transform.position - _nextPoint.transform.position);
                 animating = true;
@@ -115,11 +125,11 @@ public class Player : MonoBehaviour
                 inPoint = -1;
                 _nextPoint.BeforeApply(this);
             }
-            else if (Vector3.Distance(transform.position, StartPoint.transform.position) > pointDistance &&
+            else if (Vector3.Distance(transform.position, PrevPoint.transform.position) > pointDistance &&
                      inPoint == 0)
             {
                 inPoint = 1;
-                StartPoint.AfterApply(this);
+                PrevPoint.AfterApply(this);
             }
         }
     }
