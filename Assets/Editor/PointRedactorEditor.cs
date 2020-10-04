@@ -57,8 +57,7 @@ public class PointRedactorEditor : Editor
     private GameObject SpawnObject(GameObject gameObject)
     {
         var posToSpawn = myTarget.transform.position + Vector3.up * 1;
-
-        var newPointObject = Instantiate(gameObject, PointManager.Instance.PointHolders[0].transform);
+        var newPointObject = PrefabUtility.InstantiatePrefab(gameObject, PointManager.Instance.PointHolders[0].transform) as GameObject;
         newPointObject.transform.position = posToSpawn;
         return newPointObject;
     }

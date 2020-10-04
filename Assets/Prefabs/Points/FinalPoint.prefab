@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f6501af6b0452d81bcba24beb569ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _connections:
-  - {fileID: 0}
+  _connections: []
   OnGizmoLineWidth: 10
+  nextLevelCameraPosition: {x: 0, y: 0, z: 0}
 --- !u!1001 &743390361417506644
 PrefabInstance:
   m_ObjectHideFlags: 0
