@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb383862ecf4009917eeba912f60196, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointDistance: 0.35
-  animateDistance: 0.3
+  pointDistance: 1.5
+  animateDistance: 1.5
   speedKoef: 3
   playerAnimator: {fileID: 2126429742}
   beginPoint: {fileID: 0}
