@@ -3818,7 +3818,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _localPlayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2095543326}
     - target: {fileID: 7361845307654987782, guid: 17683fc8c1a7477438a064b468244bb4,
         type: 3}
       propertyPath: startVelocity
@@ -4761,6 +4761,7 @@ MonoBehaviour:
   - {fileID: 64214788}
   - {fileID: 885507514}
   - {fileID: 988787066}
+  - {fileID: 831809578}
   PointPrefab: {fileID: 3206161310209211839, guid: c87eaf03557c79e4d8fd642d16a43de7,
     type: 3}
   TransistorPrefab: {fileID: 5623395500042765511, guid: a6cc60a7efdbaa840a020878f88d9a99,

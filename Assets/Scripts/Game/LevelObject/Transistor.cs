@@ -12,6 +12,7 @@ public class Transistor : Point
     public Arrow down;
     public Arrow left;
     public Arrow right;
+    public Color activeColor = Color.red;
 
     private Direction _direction = Direction.None;
     private readonly Dictionary<Point, Arrow> _arrows = new Dictionary<Point, Arrow>();
@@ -192,7 +193,7 @@ public class Transistor : Point
     private void SelectArrow(Arrow arrow, Direction direction)
     {
         ClearColors();
-        arrow.SetColor(Color.red);
+        arrow.SetColor(activeColor);
         _direction = direction;
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/TransChoice");
     }
