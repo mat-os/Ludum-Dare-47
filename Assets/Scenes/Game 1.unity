@@ -6361,7 +6361,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
   - component: {fileID: 963194226}
@@ -6379,7 +6378,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
@@ -6387,7 +6386,7 @@ MonoBehaviour:
   CollisionTag: 
   Event: event:/Music
   PlayEvent: 1
-  StopEvent: 0
+  StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
@@ -6483,18 +6482,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14017,6 +14004,11 @@ PrefabInstance:
       propertyPath: beginPoint
       value: 
       objectReference: {fileID: 244952568}
+    - target: {fileID: 8788321381170546891, guid: 4ed135417f711404386e4a9b4498cb78,
+        type: 3}
+      propertyPath: speedKoef
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8788321381170546901, guid: 4ed135417f711404386e4a9b4498cb78,
         type: 3}
       propertyPath: m_LocalPosition.x

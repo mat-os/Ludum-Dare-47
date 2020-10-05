@@ -399,6 +399,7 @@ MonoBehaviour:
   down: {fileID: 658975576349383201}
   left: {fileID: 8185168102421088300}
   right: {fileID: 2706252309020066316}
+  activeColor: {r: 1, g: 0.65999997, b: 0.97199154, a: 1}
 --- !u!1001 &7094509512833022328
 PrefabInstance:
   m_ObjectHideFlags: 0

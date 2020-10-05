@@ -4,7 +4,7 @@ using GameAnalyticsSDK;
 using GameAnalyticsSDK.Events;
 using UnityEngine;
 
-public class AnaliticsController : MonoBehaviour
+public class AnaliticsController : MonoBehaviourSingleton<AnaliticsController>
 {
     void Start()
     {

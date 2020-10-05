@@ -1,4 +1,5 @@
 using DG.Tweening;
+using GameAnalyticsSDK;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ namespace Game.GameManager
 
         public void RestartScene()
         {
+            AnaliticsController.Instance.NewLevelCompletedEvent(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
